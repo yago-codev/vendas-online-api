@@ -4,7 +4,7 @@ import { Repository } from 'typeorm';
 import { hash } from 'bcrypt';
 
 import { CreateUserDto } from './dtos/createUser.dto';
-import { UserEntity } from './interface/user.entity';
+import { UserEntity } from './entities/user.entity';
 
 @Injectable()
 export class UserService {
@@ -20,6 +20,7 @@ export class UserService {
 
     return this.userRepository.save({
       ...createUser,
+      typeUser: 1,
       password: passwordHash,
     });
   }
